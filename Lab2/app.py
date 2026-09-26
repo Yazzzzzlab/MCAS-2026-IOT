@@ -3,8 +3,8 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 images = [
-    "images/pic1.jpg",
-    "images/pic2.jpg",
+    "images/pic1.png",
+    "images/pic2.png",
     "images/pic3.jpg"
 ]
 
@@ -19,13 +19,19 @@ def index():
 @app.route("/next")
 def next_img():
     global current_index
-    current_index += 1
+    if(current_index < 3):
+        current_index += 1
+    if(current_index == 3):
+        current_index = 0
     return redirect(url_for("index"))
 
 @app.route("/prev")
 def prev_img():
     global current_index
-    current_index -= 1
+    if(current_index == 0):
+        current_index = 3
+    if(current_index > 0):
+        current_index -= 1
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
