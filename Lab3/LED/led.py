@@ -1,8 +1,8 @@
 import RPi.GPIO as GPIO
 import time
 
-PIN =    # 實體腳位 ？？ (BCM GPIO??)，請依你的接線調整
-GPIO.setmode(GPIO.BOARD)
+PIN = 17  # BCM GPIO17 = 實體腳位 11，請依你的接線調整
+GPIO.setmode(GPIO.BCM)
 GPIO.setup(PIN, GPIO.OUT)
 
 try:
